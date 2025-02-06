@@ -1,15 +1,14 @@
-# 📊 Analysis of Sales for a Pizza Resturant
+# 📊 Data Driven Sales Analysis for a Pizza Restaurant Using SQL & Excel
 
 ## 🏆 Project Summary
 This project aims to analyze sales data to extract key insights and trends. The goal is to leverage SQL Server Management Studio (SSMS) and Microsoft Excel to process, clean, analyze, and visualize the data. The analysis focuses on identifying top sellers, peak sales periods, and sales trends to provide valuable business insights.
-
 
 ## 📂 Data Source
 - **Dataset:** Transactional sales records from a pizza restaurant. Obtained from Kaggle: [Dataset](https://www.kaggle.com/datasets/nextmillionaire/pizza-sales-dataset)
   
 
 ## 🛠️ Tools & Technologies Used
-- **SQL Server Management Studio (SSMS)** for creating Databse, data extraction, transformation, and analysis.
+- **SQL Server Management Studio (SSMS)** for creating databse and data querying.
 - **Microsoft Excel** for data visualization and dashboard creation.
 
 
@@ -27,24 +26,37 @@ This project aims to analyze sales data to extract key insights and trends. The 
 ### 📊 SQL Queries
 #### 🔹 Key Performance Indicators (KPIs)
 ```sql
---KPIs:
+
 
 -- Total Revenue: the sum of The total price of all pizza orders
-select SUM(total_price) as Total_revenue from Pizza_Restaurant_Sales;
+select SUM(total_price) as Total_revenue from Pizza_Restaurant_Sales
+```
+![image](https://github.com/user-attachments/assets/46f7c7c0-f731-452c-86a8-a248a24411cb)
 
+```sql
 -- Average Order Value: The avarage ampunt spent per order, calculated by dividing the total the total revenue by the total number of orders.
-select (SUM(total_price)/count(distinct order_id)) as Average_Order_Value from Pizza_Restaurant_Sales;
+select (SUM(total_price)/count(distinct order_id)) as Average_Order_Value from Pizza_Restaurant_Sales
+```
+![image](https://github.com/user-attachments/assets/795819b8-d54e-4ce1-8967-07cb10179fe1)
 
+```sql
 -- Total Pizza Sold: The sum of the quantities of all pizzas sold.
 select SUM(quantity) as Total_Pizza_Sold from Pizza_Restaurant_Sales
+```
+![image](https://github.com/user-attachments/assets/99101e39-d14c-4f2e-921d-f6e389bee891)
 
+```sql
 -- Total Orders: The total number of orders placed
 select COUNT(distinct order_id) as Total_Orders from Pizza_Restaurant_Sales
+```
+![image](https://github.com/user-attachments/assets/6116a66d-e8e2-4489-9523-8591b7b1ba5d)
 
+```sql
 -- Average Pizza Per Order: The average number of pizzas sold per order, calculated by 
 select (CAST(cast(SUM(quantity) AS decimal(10,2))/cast(COUNT(distinct order_id) AS decimal(10,2)) AS decimal(10,2))) AS Average_Pizza_Per_Order from Pizza_Restaurant_Sales
 ```
-![image](https://github.com/user-attachments/assets/59c14ec8-89c0-4e22-834a-660ac05e32c1)
+![image](https://github.com/user-attachments/assets/1785b8ab-43ff-48bb-963a-ad16e7ac909e)
+
 
 
 #### 🔹 Sales Trends
@@ -68,7 +80,6 @@ order by  DATEPART(HOUR,order_time)
 ![image](https://github.com/user-attachments/assets/17d412f7-4077-400e-a8ff-d9a1af695749)
 
 #### 🔹 Percentages of Sales 
-
 ```sql
 -- Total pizzas sold by pizza Category:
 select pizza_category,SUM(quantity) as Total_pizzas_sold
@@ -83,8 +94,7 @@ order by Total_pizzas_sold desc
 -- Percentage of Sales By Pizza Category:
 select pizza_category, 
 round(SUM(total_price),2) as Total_sales,
-round((sum(total_price)*100/(select sum(total_price) from Pizza_Restaurant_Sales --where MONTH(order_date)=1
-)),2) as PCT
+round((sum(total_price)*100/(select sum(total_price) from Pizza_Restaurant_Sales)),2) as PCT
 from Pizza_Restaurant_Sales
 group by pizza_category
 ORDER BY PCT DESC
@@ -123,37 +133,52 @@ order by Total_pizzas_sold asc
 ```
 ![image](https://github.com/user-attachments/assets/c5864c56-bce1-44ad-8de5-2d7985ede3e3)
 
----
+
 
 ## 📊 Excel Analysis
 ### 🔹 Getting & Prepairing Data
-- **Established a connection** to the database from the sql server and imported the data.
-- **standardized the data ** for analyzing it.
+- **Established a connection** to the database from the SQL server and imported the data.
+- **standardized the data** for analyzing.
 
-### 🔹 Analyizng The Data
-- ** Pivot tables** were used to analyize the data.
--  **checked the results** obtained prevously from sql.
+### 🔹 Analyizng & Visualizing Data
+- **Pivot tables** were used to analyize the data.
+- **Checked the results** obtained prevously from SQL.
 
   #### 🔹 Key Performance Indicators (KPIs)
 ![image](https://github.com/user-attachments/assets/2ba258c8-83ba-4456-9c83-34d054753bfb)
 
-#### 🔹 Sales Trends
-### 🔹 Key Insights from Excel
-- **Revenue Concentration:** Top-selling pizzas contribute to a majority of sales.
-- **Order Distribution:** Evening hours and weekends drive the highest sales.
-- **Category Performance:** Chicken-based pizzas are the most popular.
+ #### 🔹 Sales Trends
+![image](https://github.com/user-attachments/assets/c44871b7-bbb9-47b9-8ba1-6500e21d0807)
+
+ #### 🔹 Percentages of Sales 
+![image](https://github.com/user-attachments/assets/2f35e4ff-8c31-402c-a1bc-f6747e8f2a60)
+
+
+ #### 🔹 Best & Worst Sellers
+![image](https://github.com/user-attachments/assets/7bb91f45-eedf-45a6-aaa4-e5fc9e1b1ed4)
+
+
+### 🔹 Dashboard
+![image](https://github.com/user-attachments/assets/ba2e4601-c6c2-4bd4-a629-8b3ab0a52a23)
 
 ---
+## 📉 Resluts
+- **Sales peak toward** the latter part of the week, with the highest number of transactions occurring on Fridays.
+
+- **The most active hours** for customer purchases are during midday and evening meal times.
+
+- **The most popular category** of pizza generates the highest sales figures across all order sizes.
+
+- **Larger-sized pizzas** contribute significantly to revenue compared to other size variations.
 
 ## 📢 Recommendations
-1. **Increase promotions on peak sales days (Sunday).**
-2. **Expand menu variations of top-selling pizzas.**
-3. **Optimize pricing strategy to improve average order value.**
+- Increase promotional efforts and staffing levels on peak sales days to enhance customer service and efficiency.
 
-## ⚠️ Limitations
-- The dataset does not account for external factors like **seasonal trends** or **marketing campaigns**.
-- It assumes all recorded sales transactions are accurate.
+- Optimize inventory and kitchen operations during the busiest meal hours to meet customer demand smoothly.
 
-## 📚 References
-- Data obtained from a YouTube tutorial: [Project Link](https://www.youtube.com/watch?v=3Acmk-rqn6c&list=PLDkpn29pvEyW5S-DjxJ2IMrksB_MobFYA)
+- Focus marketing campaigns on best-selling pizza categories to further drive revenue growth.
+
+- Consider offering incentives or deals on larger-sized pizzas to capitalize on their strong sales performance.
+
+- Reevaluate the less popular pizza options to determine whether adjustments or menu changes are necessary to improve their appeal.
 
