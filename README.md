@@ -3,6 +3,34 @@
 ## 🏆 Project Summary
 This project aims to analyze sales data to extract key insights and trends. The goal is to leverage SQL Server Management Studio (SSMS) and Microsoft Excel to process, clean, analyze, and visualize the data. The analysis focuses on identifying top sellers, peak sales periods, and sales trends to provide valuable business insights.
 
+---
+
+# 📑 Table of Contents  
+
+1. [🏆 Project Summary](#🏆-project-summary)  
+2. [📂 Data Source](#📂-data-source)  
+3. [🛠 Tools & Technologies Used](#🛠️-tools--technologies-used)  
+4. [🔍 Data Analysis Breakdown](#🔍-data-analysis-breakdown)  
+   - [🗄 SQL Analysis](#🗄-sql-analysis)  
+     - [📌 Data Preparation](#📌-data-preparation)  
+     - [📊 SQL Queries](#📊-sql-queries)  
+       - [🔹 Key Performance Indicators (KPIs)](#🔹-key-performance-indicators-kpis)  
+       - [🔹 Sales Trends](#🔹-sales-trends)  
+       - [🔹 Percentages of Sales](#🔹-percentages-of-sales)  
+       - [🔹 Best & Worst Sellers](#🔹-best--worst-sellers)  
+   - [📊 Excel Analysis](#📊-excel-analysis)  
+     - [🔹 Getting & Preparing Data](#🔹-getting--preparing-data)  
+     - [🔹 Analyzing & Visualizing Data](#🔹-analyzing--visualizing-data)  
+       - [🔹 Key Performance Indicators (KPIs)](#🔹-key-performance-indicators-kpis-1)  
+       - [🔹 Sales Trends](#🔹-sales-trends-1)  
+       - [🔹 Percentages of Sales](#🔹-percentages-of-sales-1)  
+       - [🔹 Best & Worst Sellers](#🔹-best--worst-sellers-1)  
+     - [🔹 Dashboard](#🔹-dashboard)  
+5. [📉 Results](#📉-results)  
+6. [📢 Recommendations](#📢-recommendations)  
+
+---
+
 ## 📂 Data Source
 - **Dataset:** Transactional sales records from a pizza restaurant. Obtained from Kaggle: [Dataset](https://www.kaggle.com/datasets/nextmillionaire/pizza-sales-dataset)
   
